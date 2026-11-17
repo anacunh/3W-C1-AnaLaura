@@ -1,0 +1,41 @@
+
+PROTOCOLO EXPERIMENTAL V3 - BLOCO C
+
+Dataset: Petrobras 3W 2.0.0
+
+Trabalhos:
+C1 - Classificacao supervisionada
+C2 - Deteccao nao supervisionada
+
+Inventario:
+2228 instancias totais
+1119 reais
+1089 simuladas
+20 elaboradas por especialistas
+
+Particao real V3:
+Treino: 28 pocos, 528 instancias
+Validacao: 6 pocos, 183 instancias
+Teste: 6 pocos, 408 instancias
+
+Validacao:
+GroupKFold com 5 folds no conjunto de treino.
+Divisao aleatoria somente para comparacao.
+
+LIMITACOES:
+- V3 candidata, nao aprovada definitivamente.
+- Classes raras ausentes em alguns folds.
+- Contagens por categoria de arquivo.
+- Rotulos temporais ainda nao auditados.
+- Disponibilidade de normalidade no C2
+  ainda precisa ser verificada.
+- Foram encontrados 40 identificadores
+  de pocos; documento informa 42.
+- Dados simulados e de especialistas
+  nao receberam particao real.
+- Nao foram treinados modelos nesta etapa.
+
+NAO USAR O TESTE PARA AJUSTAR MODELOS.
+
+Este pacote contem manifestos e tabelas,
+nao as series temporais completas.
