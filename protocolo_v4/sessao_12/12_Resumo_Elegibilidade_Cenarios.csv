@@ -1,0 +1,4 @@
+Cenario,Classes_elegiveis,Janelas_antes,Janelas_depois,Janelas_excluidas,Arquivos,Pocos,Retencao_cenario_pct,Retencao_matriz_original_pct
+A,4,172454,160770,11684,447,27,93.22,49.94
+B,6,321929,304334,17595,447,27,94.53,94.53
+C,8,321929,303991,17938,447,27,94.43,94.43

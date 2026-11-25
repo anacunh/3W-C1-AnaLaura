@@ -1,0 +1,10 @@
+Cenario,Fold,Atributos_auditados,Atributos_sem_dados_treino,Maior_ausencia_treino_pct,Maior_ausencia_validacao_pct
+A,1,25,0,29.43,94.41
+A,2,25,0,68.19,57.84
+A,3,25,0,75.02,21.98
+B,1,25,0,29.64,78.95
+B,2,25,0,47.5,69.76
+B,3,25,0,46.12,15.05
+C,1,25,0,29.68,78.97
+C,2,25,0,47.57,69.76
+C,3,25,0,46.13,15.09

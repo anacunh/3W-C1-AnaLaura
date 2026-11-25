@@ -10,7 +10,7 @@ The main research question is whether deep learning models applied to raw multiv
 **Institution:** Universidade Federal do Pará (UFPA)  
 **Course:** Special Topics in Artificial Intelligence Applied to Geophysical Data  
 **Project:** Block C — C1: Supervised Event Classification  
-**Status:** Session 11 completed; V4 training feature extraction verified.  
+**Status:** Session 12 completed; V4 class eligibility and internal folds fixed.  
 **Last updated:** November 25, 2026.
 
 ## 2. Dataset
@@ -44,11 +44,13 @@ The original dataset files are not redistributed in this repository.
 | [09 — Preprocessing diagnosis](09_Diagnostico_Preprocessamento_C1.ipynb) | Sensor-related exclusions, class coverage and grouped validation diagnostics. |
 | [10 — V4 preprocessing audit](10_Preprocessamento_Final_C1.ipynb) | Verification of the adjusted V4 protocol and full training-file audit of sensor eligibility rules. |
 | [11 — V4 feature matrix](11_Construcao_Matriz_Atributos_V4_C1.ipynb) | Construction and integrity verification of the V4 training feature matrix. |
+| [12 — Class eligibility and V4 training preparation](12_Auditoria_Classes_e_Preparacao_V4_C1.ipynb) | Temporal-label audit, eligibility criteria, fixed internal folds and missing-feature diagnostics. |
 
 Additional files:
 
 - [`protocolo_v3/`](protocolo_v3/): historical V3 partitioning artifacts.
 - [`protocolo_v4/`](protocolo_v4/): verified original V4 well and instance manifests, Session 10 audit CSV and protocol documentation.
+- [`protocolo_v4/sessao_12/`](protocolo_v4/sessao_12/): original Session 12 audit CSVs, experimental configuration and documentation.
 - [`requirements.txt`](requirements.txt): dependencies reviewed through Session 11, including joblib; versions are not yet pinned.
 - `README.md`: project documentation.
 
@@ -223,7 +225,7 @@ The distinction between file categories and temporal labels is essential. For ex
 
 Developed-event labels 1, 3, 5, 6 and 7 each occur in only one training well. In addition, WELL-00002 and WELL-00022 contribute 89,738 and 61,456 windows, respectively (approximately 46.97% combined). Overlapping windows are not independent observations.
 
-These findings motivate a formal audit of class eligibility, transient-label treatment, group-aware validation and training imbalance. No final class exclusions, label mapping, imputation or V4 classifier performance have been established at this stage.
+These findings motivate a formal audit of class eligibility, transient-label treatment, group-aware validation and training imbalance. At the end of Session 11, no class exclusions, label mapping, imputation or V4 classifier performance had been established. Session 12 subsequently defined the experimental class scope and fold assignments.
 
 ## 9. Methodological Guidance — Checkpoint 1 (November 18, 2026)
 
@@ -237,23 +239,41 @@ The following directions were discussed with the course instructor:
 - Report unsuccessful experiments and limitations alongside positive findings.
 - Consider an additional comparable dataset for external evaluation if one becomes available, without delaying the primary study.
 
-The final label strategy and class-eligibility criteria remain to be defined before definitive V4 model training. The instructor's guidance does not establish a specific numerical exclusion threshold or a final list of excluded classes.
+The instructor's guidance did not establish a specific numerical exclusion threshold or a final list of excluded classes. The project adopted a three-well eligibility criterion in Session 12, before V4 model training.
 
-## 10. Planned Modeling and Evaluation
+## 10. Session 12 — Class Eligibility and Training Preparation
+
+The original 321,929-window training matrix was audited by temporal label, file and well. Classes 1, 3, 5, 6 and 7 (developed events) occur in only one well each; class 9 occurs in two wells, with 98.71% of its windows from one well. Class eligibility was defined as representation in at least three training wells, to support three-fold internal validation.
+
+| Scenario | Eligible labels | Retained windows | Original matrix retained |
+|---|---|---:|---:|
+| A — Exclude transients | 0, 2, 4, 8 | 160,770 | 49.94% |
+| B — Merge transients with events | 0, 2, 4, 7, 8, 9 | 304,334 | 94.53% |
+| C — Distinct labels (primary) | 0, 2, 4, 8, 102, 107, 108, 109 | 303,991 | 94.43% |
+
+All scenarios retain 447 files and 27 wells. Only classes 7 and 9 gain well coverage by merging transients. In scenario B, 99.96% of class-7 windows are transient. Different label spaces must not be treated as directly comparable classification tasks.
+
+A fixed well assignment was selected from 30,000 candidate partitions (seed 42; 984 viable for scenario C), using class/window counts only. Each of the three internal folds has 18 training wells and nine validation wells, with all eligible labels present in each fold for all three scenarios. The fixed V4 validation and test subsets remain separate and unprocessed.
+
+All 25 statistical attributes have finite observations in every internal training fold. No infinite values or inconsistent availability flags were detected. Median imputation will be fitted only on the training portion of each fold. Sensor availability differs substantially across classes, motivating planned ablations of the 30 full predictors, 25 statistical features alone, and five availability flags alone.
+
+The primary scenario is a restricted closed-set task, not recognition of every 3W event. The original matrix remains intact. No V4 classifier has yet been trained, and no imputation has been applied. See [Session 12 artifacts and configuration](protocolo_v4/sessao_12/).
+
+## 11. Planned Modeling and Evaluation
 
 The next stages include:
 
-- Audit temporal-label support by well and file; define class eligibility and transient-label experiments before scoring models.
-- Define group-aware validation folds, inspect class coverage, and preserve the fixed V4 partition.
+- Reuse the fixed Session 12 class definitions and internal folds; audit temporal-label coverage of the fixed V4 validation/test subsets at their designated evaluation stages.
+- Preserve the fixed V4 partition and report excluded labels and windows.
 - Fit imputation, scaling where appropriate, and any balancing procedures on training data only, within each fold when applicable.
-- Train reproducible statistical-feature baselines, including Random Forest and XGBoost.
+- Train reproducible statistical-feature baselines, including Random Forest and XGBoost; compare unweighted and class-weighted training and investigate sensor-availability ablation.
 - Investigate deep learning on raw multivariate time series under a comparable evaluation protocol.
 - Evaluate macro F1, per-class metrics, confusion matrices and well-independent generalization; explicitly report class coverage and evaluation scope.
 - Investigate model interpretation (e.g., SHAP), uncertainty and robustness.
 - Conduct complementary synthetic sensitivity experiments and, if feasible, external-data evaluation.
 - Develop comparative figures and document both successful and unsuccessful experiments.
 
-## 11. Execution Environment and Reproducibility
+## 12. Execution Environment and Reproducibility
 
 The analyses were developed in Python using Google Colab. Libraries used include pandas, NumPy, Matplotlib, requests, scikit-learn, umap-learn and Parquet support through PyArrow.
 
@@ -261,9 +281,9 @@ The notebooks document the computational procedures and require access to the of
 
 The V4 manifests and Session 10 audit have been published and verified. The dependency list has been reviewed through Session 11; exact package versions, environment verification and adaptation of notebook paths remain necessary before final reproducibility can be claimed.
 
-## 12. Project Status and Scientific Writing
+## 13. Project Status and Scientific Writing
 
-**Current stage:** Sessions 01–11 completed. V4 training feature extraction and integrity checks are complete; definitive V4 preprocessing and supervised modeling remain pending.
+**Current stage:** Sessions 01–12 completed. The V4 training feature matrix, class eligibility, fixed internal folds and preprocessing plan are documented; V4 supervised modeling is next.
 
 | Milestone | Status |
 |---|---|
@@ -272,12 +292,14 @@ The V4 manifests and Session 10 audit have been published and verified. The depe
 | Initial V3 Random Forest and grouped diagnostic | Completed (preliminary) |
 | Adjusted V4 partition and sensor audit | Completed |
 | V4 training feature extraction | Completed |
-| Class eligibility, transient strategy and grouped folds | Next stage |
+| Class eligibility, transient strategy and grouped folds | Completed |
+| Session 12 audit artifacts and experimental configuration | Published and verified |
 | Definitive V4 baselines and deep learning comparison | Pending |
 | Interpretability, uncertainty and synthetic sensitivity | Pending |
 | V4 manifest and audit publication; dependency review through Session 11 | Completed |
 | Exact environment versions and end-to-end reproduction | Pending |
-| Scientific manuscript and comparative figures | In progress |
+| Scientific manuscript | Drafting deferred until computational workflow is complete |
+| Comparative model figures | Pending |
 
 Upcoming course milestones:
 
@@ -287,15 +309,15 @@ Upcoming course milestones:
 - December 16–17, 2026: AI final presentations.
 - December 17, 2026: Scientific Writing final manuscript V1 and accompanying materials.
 
-Scientific writing is developed in parallel with the computational workflow. Reported results must distinguish historical V3 diagnostics, V4 data-preparation results and future V4 classifier performance.
+Technical session records and repository documentation continue throughout the computational workflow. Manuscript drafting is deferred until the computational work is complete. The course milestones listed above remain unchanged unless the instructor revises them. Reported results must distinguish historical V3 diagnostics, V4 data-preparation results and future V4 classifier performance.
 
-## 13. Related Research
+## 14. Related Research
 
 C1 is developed in parallel with C2, coordinated by Ananda do Socorro Correa da Costa, which investigates unsupervised anomaly detection and early warning of undesirable events.
 
 Both studies belong to Block C and share the adjusted V4 partitioning protocol. Their distinct learning objectives and evaluation scopes must be considered when comparing results.
 
-## 14. Dataset Reference
+## 15. Dataset Reference
 
 Petrobras 3W Dataset: https://github.com/petrobras/3W
 

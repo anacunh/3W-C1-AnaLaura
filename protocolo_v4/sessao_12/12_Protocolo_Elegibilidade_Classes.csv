@@ -1,0 +1,40 @@
+Rotulo_modelo,Janelas,Arquivos,Pocos,Concentracao_max_pct,Cenario,Elegivel,Justificativa
+0,138404,304,27,52.94,A,True,Cobertura candidata para tres folds
+1,58,1,1,100.0,A,False,Insuficiente para generalizacao entre pocos
+2,299,7,5,86.29,A,True,Cobertura candidata para tres folds
+3,10967,31,1,100.0,A,False,Insuficiente para generalizacao entre pocos
+4,20211,143,3,78.36,A,True,Cobertura candidata para tres folds
+5,68,3,1,100.0,A,False,Insuficiente para generalizacao entre pocos
+6,248,3,1,100.0,A,False,Insuficiente para generalizacao entre pocos
+7,34,1,1,100.0,A,False,Insuficiente para generalizacao entre pocos
+8,1856,7,7,40.68,A,True,Cobertura candidata para tres folds
+9,309,2,2,98.71,A,False,Insuficiente para cobertura em tres folds
+0,138404,304,27,52.94,B,True,Cobertura candidata para tres folds
+1,188,1,1,100.0,B,False,Insuficiente para generalizacao entre pocos
+2,1700,18,5,79.82,B,True,Cobertura candidata para tres folds
+3,10967,31,1,100.0,B,False,Insuficiente para generalizacao entre pocos
+4,20211,143,3,78.36,B,True,Cobertura candidata para tres folds
+5,6105,6,1,100.0,B,False,Insuficiente para generalizacao entre pocos
+6,335,3,1,100.0,B,False,Insuficiente para generalizacao entre pocos
+7,80973,14,3,65.29,B,True,Cobertura candidata para tres folds
+8,58980,9,7,30.47,B,True,Cobertura candidata para tres folds
+9,4066,13,6,46.78,B,True,Cobertura candidata para tres folds
+0,138404,304,27,52.94,C,True,Cobertura candidata para tres folds
+1,58,1,1,100.0,C,False,Insuficiente para generalizacao entre pocos
+2,299,7,5,86.29,C,True,Cobertura candidata para tres folds
+3,10967,31,1,100.0,C,False,Insuficiente para generalizacao entre pocos
+4,20211,143,3,78.36,C,True,Cobertura candidata para tres folds
+5,68,3,1,100.0,C,False,Insuficiente para generalizacao entre pocos
+6,248,3,1,100.0,C,False,Insuficiente para generalizacao entre pocos
+7,34,1,1,100.0,C,False,Insuficiente para generalizacao entre pocos
+8,1856,7,7,40.68,C,True,Cobertura candidata para tres folds
+9,309,2,2,98.71,C,False,Insuficiente para cobertura em tres folds
+101,130,1,1,100.0,C,False,Insuficiente para generalizacao entre pocos
+102,1401,18,5,78.44,C,True,Cobertura candidata para tres folds
+103,0,0,0,,C,False,Classe ausente
+104,0,0,0,,C,False,Classe ausente
+105,6037,6,1,100.0,C,False,Insuficiente para generalizacao entre pocos
+106,87,3,1,100.0,C,False,Insuficiente para generalizacao entre pocos
+107,80939,14,3,65.32,C,True,Cobertura candidata para tres folds
+108,57124,9,7,31.26,C,True,Cobertura candidata para tres folds
+109,3757,13,6,42.51,C,True,Cobertura candidata para tres folds

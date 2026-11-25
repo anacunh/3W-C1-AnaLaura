@@ -1,0 +1,406 @@
+{
+    "projeto": "C1 - Classificacao supervisionada 3W",
+    "dataset": "3W 2.0.0",
+    "sessao": 12,
+    "data": "2026-11-25",
+    "particionamento": "V4 ajustada",
+    "origem_dados": "Real",
+    "cenario_principal": "C",
+    "cenarios_comparativos": [
+        "A",
+        "B"
+    ],
+    "matriz_original": {
+        "janelas": 321929,
+        "colunas": 37,
+        "arquivos": 478,
+        "pocos": 27,
+        "janela_amostras": 100,
+        "deslocamento_amostras": 50,
+        "minimo_sensores": 2,
+        "rotulos_homogeneos": true
+    },
+    "preditores": {
+        "sensores": [
+            "P-TPT",
+            "T-TPT",
+            "P-ANULAR",
+            "P-JUS-CKGL",
+            "P-MON-CKP"
+        ],
+        "estatisticas": [
+            "media",
+            "desvio",
+            "inclinacao",
+            "p10",
+            "p90"
+        ],
+        "atributos_estatisticos": [
+            "P-TPT_media",
+            "P-TPT_desvio",
+            "P-TPT_inclinacao",
+            "P-TPT_p10",
+            "P-TPT_p90",
+            "T-TPT_media",
+            "T-TPT_desvio",
+            "T-TPT_inclinacao",
+            "T-TPT_p10",
+            "T-TPT_p90",
+            "P-ANULAR_media",
+            "P-ANULAR_desvio",
+            "P-ANULAR_inclinacao",
+            "P-ANULAR_p10",
+            "P-ANULAR_p90",
+            "P-JUS-CKGL_media",
+            "P-JUS-CKGL_desvio",
+            "P-JUS-CKGL_inclinacao",
+            "P-JUS-CKGL_p10",
+            "P-JUS-CKGL_p90",
+            "P-MON-CKP_media",
+            "P-MON-CKP_desvio",
+            "P-MON-CKP_inclinacao",
+            "P-MON-CKP_p10",
+            "P-MON-CKP_p90"
+        ],
+        "indicadores_disponibilidade": [
+            "P-TPT_disponivel",
+            "T-TPT_disponivel",
+            "P-ANULAR_disponivel",
+            "P-JUS-CKGL_disponivel",
+            "P-MON-CKP_disponivel"
+        ],
+        "ordem_preditores": [
+            "P-TPT_media",
+            "P-TPT_desvio",
+            "P-TPT_inclinacao",
+            "P-TPT_p10",
+            "P-TPT_p90",
+            "T-TPT_media",
+            "T-TPT_desvio",
+            "T-TPT_inclinacao",
+            "T-TPT_p10",
+            "T-TPT_p90",
+            "P-ANULAR_media",
+            "P-ANULAR_desvio",
+            "P-ANULAR_inclinacao",
+            "P-ANULAR_p10",
+            "P-ANULAR_p90",
+            "P-JUS-CKGL_media",
+            "P-JUS-CKGL_desvio",
+            "P-JUS-CKGL_inclinacao",
+            "P-JUS-CKGL_p10",
+            "P-JUS-CKGL_p90",
+            "P-MON-CKP_media",
+            "P-MON-CKP_desvio",
+            "P-MON-CKP_inclinacao",
+            "P-MON-CKP_p10",
+            "P-MON-CKP_p90",
+            "P-TPT_disponivel",
+            "T-TPT_disponivel",
+            "P-ANULAR_disponivel",
+            "P-JUS-CKGL_disponivel",
+            "P-MON-CKP_disponivel"
+        ]
+    },
+    "elegibilidade": {
+        "minimo_pocos_por_classe": 3,
+        "criterio": "Representatividade em tres ou mais pocos do treinamento",
+        "escopo": "Classificacao de classes elegiveis",
+        "preservar_matriz_original": true,
+        "cenarios": {
+            "A": {
+                "descricao": "Normal e eventos desenvolvidos, sem transientes",
+                "classes_elegiveis": [
+                    0,
+                    2,
+                    4,
+                    8
+                ],
+                "classes_excluidas_ou_ausentes": [
+                    1,
+                    3,
+                    5,
+                    6,
+                    7,
+                    9
+                ],
+                "janelas": 160770,
+                "arquivos": 447,
+                "pocos": 27
+            },
+            "B": {
+                "descricao": "Transientes associados aos respectivos eventos",
+                "classes_elegiveis": [
+                    0,
+                    2,
+                    4,
+                    7,
+                    8,
+                    9
+                ],
+                "classes_excluidas_ou_ausentes": [
+                    1,
+                    3,
+                    5,
+                    6
+                ],
+                "janelas": 304334,
+                "arquivos": 447,
+                "pocos": 27
+            },
+            "C": {
+                "descricao": "Transientes e eventos desenvolvidos distintos",
+                "classes_elegiveis": [
+                    0,
+                    2,
+                    4,
+                    8,
+                    102,
+                    107,
+                    108,
+                    109
+                ],
+                "classes_excluidas_ou_ausentes": [
+                    1,
+                    3,
+                    5,
+                    6,
+                    7,
+                    9,
+                    101,
+                    103,
+                    104,
+                    105,
+                    106
+                ],
+                "janelas": 303991,
+                "arquivos": 447,
+                "pocos": 27
+            }
+        }
+    },
+    "validacao_cruzada": {
+        "metodo": "Folds fixos por poco com busca baseada nas contagens de classes",
+        "n_folds": 3,
+        "semente": 42,
+        "divisoes_candidatas": 30000,
+        "divisoes_viaveis": 984,
+        "criterio_desequilibrio": 0.06529776462546492,
+        "otimizacao_por_metricas_modelo": false,
+        "folds": {
+            "1": {
+                "pocos_treinamento": [
+                    "WELL-00007",
+                    "WELL-00011",
+                    "WELL-00013",
+                    "WELL-00014",
+                    "WELL-00022",
+                    "WELL-00023",
+                    "WELL-00025",
+                    "WELL-00026",
+                    "WELL-00029",
+                    "WELL-00031",
+                    "WELL-00032",
+                    "WELL-00034",
+                    "WELL-00035",
+                    "WELL-00037",
+                    "WELL-00038",
+                    "WELL-00039",
+                    "WELL-00041",
+                    "WELL-00042"
+                ],
+                "pocos_validacao": [
+                    "WELL-00002",
+                    "WELL-00009",
+                    "WELL-00012",
+                    "WELL-00020",
+                    "WELL-00021",
+                    "WELL-00027",
+                    "WELL-00028",
+                    "WELL-00036",
+                    "WELL-00040"
+                ]
+            },
+            "2": {
+                "pocos_treinamento": [
+                    "WELL-00002",
+                    "WELL-00007",
+                    "WELL-00009",
+                    "WELL-00011",
+                    "WELL-00012",
+                    "WELL-00020",
+                    "WELL-00021",
+                    "WELL-00022",
+                    "WELL-00025",
+                    "WELL-00027",
+                    "WELL-00028",
+                    "WELL-00034",
+                    "WELL-00036",
+                    "WELL-00037",
+                    "WELL-00038",
+                    "WELL-00040",
+                    "WELL-00041",
+                    "WELL-00042"
+                ],
+                "pocos_validacao": [
+                    "WELL-00013",
+                    "WELL-00014",
+                    "WELL-00023",
+                    "WELL-00026",
+                    "WELL-00029",
+                    "WELL-00031",
+                    "WELL-00032",
+                    "WELL-00035",
+                    "WELL-00039"
+                ]
+            },
+            "3": {
+                "pocos_treinamento": [
+                    "WELL-00002",
+                    "WELL-00009",
+                    "WELL-00012",
+                    "WELL-00013",
+                    "WELL-00014",
+                    "WELL-00020",
+                    "WELL-00021",
+                    "WELL-00023",
+                    "WELL-00026",
+                    "WELL-00027",
+                    "WELL-00028",
+                    "WELL-00029",
+                    "WELL-00031",
+                    "WELL-00032",
+                    "WELL-00035",
+                    "WELL-00036",
+                    "WELL-00039",
+                    "WELL-00040"
+                ],
+                "pocos_validacao": [
+                    "WELL-00007",
+                    "WELL-00011",
+                    "WELL-00022",
+                    "WELL-00025",
+                    "WELL-00034",
+                    "WELL-00037",
+                    "WELL-00038",
+                    "WELL-00041",
+                    "WELL-00042"
+                ]
+            }
+        }
+    },
+    "preprocessamento": {
+        "imputacao": "Mediana",
+        "ajuste_imputacao": "Exclusivamente no treinamento de cada fold",
+        "preservar_indicadores_binarios": true,
+        "normalizacao": "Quando necessaria, ajustada no treino",
+        "metadados_como_preditores": false,
+        "balanceamento": "Somente no treinamento; estrategia a avaliar na Sessao 13"
+    },
+    "experimentos_planejados": {
+        "baseline_sem_balanceamento": true,
+        "avaliar_ponderacao_classes": true,
+        "ablacao_disponibilidade": [
+            "30 preditores",
+            "25 atributos estatisticos",
+            "5 indicadores de disponibilidade"
+        ],
+        "sensibilidade_dados_sinteticos": true
+    },
+    "controle_experimental": {
+        "validacao_fixa_V4_preservada": true,
+        "teste_fixo_V4_preservado": true,
+        "validacao_e_teste_processados": false,
+        "auditar_cobertura_temporal_externa": true,
+        "reportar_classes_fora_do_escopo": true,
+        "modelos_treinados_nesta_sessao": false,
+        "imputacao_aplicada_nesta_sessao": false
+    },
+    "arquivos_auditoria": [
+        {
+            "arquivo": "12_Auditoria_Atributos_Ausentes.csv",
+            "bytes": 1495,
+            "sha256": "51820b9a6ee2e196ef6f3f897f245744ac91c601543127cd426e113b2fee0b44"
+        },
+        {
+            "arquivo": "12_Auditoria_Atributos_por_Fold.csv",
+            "bytes": 11069,
+            "sha256": "a2743c7cafe399d9d0aa9a4aa6ebc5d6cafd07ac206f565cc674ccec94ddc984"
+        },
+        {
+            "arquivo": "12_Auditoria_Disponibilidade_Sensores.csv",
+            "bytes": 298,
+            "sha256": "63dd7f76f4e641cdd485f9f8cf27cb76b29378940dd9ff47b82ba7739cad9bcf"
+        },
+        {
+            "arquivo": "12_Auditoria_Representatividade_Classes.csv",
+            "bytes": 2351,
+            "sha256": "9c7cde2f4f84f6618f4e5fa27628b7b635efda5688d07957213294c1aca515f8"
+        },
+        {
+            "arquivo": "12_Cenario_Rotulos_Distintos.csv",
+            "bytes": 386,
+            "sha256": "23bc5dfbc3fa4cf999840671f0615a05471b424f94bdefb41f96238b5875dd75"
+        },
+        {
+            "arquivo": "12_Cobertura_Classes_Folds.csv",
+            "bytes": 651,
+            "sha256": "13f950dea178f0d259dc01afa27d46b0853ecd8a87d03319bb872b303986db35"
+        },
+        {
+            "arquivo": "12_Comparacao_Cenarios_Transientes.csv",
+            "bytes": 296,
+            "sha256": "171b5e35d9f7694c6cc7298989b9060b6c7ba5ee7c82216f3c418616bfb9e4e8"
+        },
+        {
+            "arquivo": "12_Disponibilidade_Sensores_por_Classe.csv",
+            "bytes": 370,
+            "sha256": "0b56046e490a320a9be797e62e188059d044002331fa3fc70cedb844262b2d00"
+        },
+        {
+            "arquivo": "12_Distribuicao_Fases_Cenario_C.csv",
+            "bytes": 99,
+            "sha256": "04205f400642b20b9439fd41874d447afa97ef020579f34e54cf731d56465a17"
+        },
+        {
+            "arquivo": "12_Distribuicao_Numero_Sensores.csv",
+            "bytes": 87,
+            "sha256": "4f2ecf213ec5cad8108cfefe228150c3e7ff37e3364c560054353574676b9f4f"
+        },
+        {
+            "arquivo": "12_Distribuicao_Rotulos_por_Poco.csv",
+            "bytes": 1560,
+            "sha256": "2125f7dd203711303b40dad3ecdcd41d62204e188c6ddd9c2bc8fc33c2bac149"
+        },
+        {
+            "arquivo": "12_Impacto_Associacao_Transientes.csv",
+            "bytes": 530,
+            "sha256": "1810fb3ce35cabef1b80ab5dc56cfa0022354e14a75f5cd5813daf68b221d6c4"
+        },
+        {
+            "arquivo": "12_Mapa_Folds_por_Poco.csv",
+            "bytes": 361,
+            "sha256": "545eb250bf08fa14e6c0795a1c11db1b02aaae54c4ff8e80b0ad97e411d83d3d"
+        },
+        {
+            "arquivo": "12_Protocolo_Elegibilidade_Classes.csv",
+            "bytes": 2575,
+            "sha256": "4216a4db5a89b718f6565406c73fca1c68e072767b9d89b80ed1f6ec26db73f0"
+        },
+        {
+            "arquivo": "12_Resumo_Elegibilidade_Cenarios.csv",
+            "bytes": 267,
+            "sha256": "ffec88679dd4ca1583064ce6d87124f53dd0bf3b18d0fba475eeb4aa212b1959"
+        },
+        {
+            "arquivo": "12_Resumo_Folds_Cenarios.csv",
+            "bytes": 345,
+            "sha256": "7a883410b2ab18ab5296b88fe2217188542635785d0545a8b702a6892a32e2e4"
+        },
+        {
+            "arquivo": "12_Viabilidade_Imputacao.csv",
+            "bytes": 303,
+            "sha256": "5e93880d7473dc56d46dc2d703d36dbb6b64ea191c6e54d142d8a89bebce48b0"
+        }
+    ]
+}
