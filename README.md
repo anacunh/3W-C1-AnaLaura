@@ -47,11 +47,12 @@ The original dataset files are not redistributed in this repository.
 
 Additional files:
 
-- `protocolo_v3/`: historical V3 partitioning artifacts.
-- `requirements.txt`: existing dependency list, to be reviewed as the workflow evolves.
+- [`protocolo_v3/`](protocolo_v3/): historical V3 partitioning artifacts.
+- [`protocolo_v4/`](protocolo_v4/): verified original V4 well and instance manifests, Session 10 audit CSV and protocol documentation.
+- [`requirements.txt`](requirements.txt): dependencies reviewed through Session 11, including joblib; versions are not yet pinned.
 - `README.md`: project documentation.
 
-The V4 manifests and generated Parquet feature files are currently maintained in the project working environment; the V4 manifests have not yet been published in this repository.
+The original V4 manifests and Session 10 audit CSV are published in [`protocolo_v4/`](protocolo_v4/). Their Git blob hashes were verified against the original files. Generated Parquet feature files remain in the project working environment.
 
 ## 4. Initial Dataset Exploration and Reference Methodology (Sessions 01–05)
 
@@ -97,7 +98,7 @@ Three initial candidate partitioning strategies (V1–V3) were developed using r
 | Test | 6 | 408 | 6 | 408 |
 | **Total** | **40** | **1,119** | **40** | **1,119** |
 
-V4 was adjusted to improve category representation in the fixed validation subset while preserving the original six test wells. No well identifier overlaps the training, validation and test subsets. The partition is not to be optimized using classifier scores.
+V4 was adjusted to improve category representation in the fixed validation subset while preserving the original six test wells. WELL-00030 moved from training to validation and WELL-00022 moved from validation to training. No well identifier overlaps the training, validation and test subsets. The partition is not to be optimized using classifier scores.
 
 V3 validation lacked file categories 1, 3, 6 and 8. V4 validation contains seven of the ten file categories, with categories 1, 3 and 6 absent. This is a file-level diagnostic; temporal-label coverage must be assessed separately.
 
@@ -258,7 +259,7 @@ The analyses were developed in Python using Google Colab. Libraries used include
 
 The notebooks document the computational procedures and require access to the official Petrobras 3W Dataset and relevant project artifacts. Some notebook cells use Google Drive paths or interactive uploads; these paths must be adapted to the execution environment.
 
-The existing dependency list and V4 manifest publication still require review before final reproducibility can be claimed.
+The V4 manifests and Session 10 audit have been published and verified. The dependency list has been reviewed through Session 11; exact package versions, environment verification and adaptation of notebook paths remain necessary before final reproducibility can be claimed.
 
 ## 12. Project Status and Scientific Writing
 
@@ -274,7 +275,8 @@ The existing dependency list and V4 manifest publication still require review be
 | Class eligibility, transient strategy and grouped folds | Next stage |
 | Definitive V4 baselines and deep learning comparison | Pending |
 | Interpretability, uncertainty and synthetic sensitivity | Pending |
-| V4 manifest publication and dependency review | Pending |
+| V4 manifest and audit publication; dependency review through Session 11 | Completed |
+| Exact environment versions and end-to-end reproduction | Pending |
 | Scientific manuscript and comparative figures | In progress |
 
 Upcoming course milestones:
